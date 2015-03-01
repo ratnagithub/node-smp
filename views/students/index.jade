@@ -1,0 +1,29 @@
+extends ../layouts/default.jade
+block content
+    div(class="page-header")
+        h3
+            | Students 
+            small= msg
+    div(class="table-responsive")
+        table(class="table table-striped")
+            thead
+                tr
+                    th Name
+                    th Age
+                    th Department
+                    th Semester
+                    th Email
+                    th Phone
+                    th Action
+            tbody
+                each student, index in students
+                    tr
+                        td=student.name
+                        td=student.age
+                        td=student.department
+                        td=student.semester
+                        td=student.email
+                        td=student.phone
+                        td
+                            a(href="/students/remove/#{student._id.toString()}") Delete
+    button(type="button", class="btn btn-primary", data-target="#modal-content", data-behavior="ajax", data-href="/students/add") Add Student

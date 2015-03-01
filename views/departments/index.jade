@@ -1,0 +1,19 @@
+extends ../layouts/default.jade
+block content
+    div(class="page-header")
+        h3
+            | Departments 
+            small= msg
+    div(class="table-responsive")
+        table(class="table table-striped")
+            thead
+                tr
+                    th Name of the department
+                    th Head of the department
+                    th No of semesters
+            tbody
+                each dept, index in departments
+                    tr
+                        td=dept.name
+                        td=dept.hod
+                        td=dept.nos
