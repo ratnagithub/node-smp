@@ -1,7 +1,9 @@
 var express = require('express'),
     router = express.Router(),
-    studentModel = require('../models/students.js');
+    studentModel = require('../models/students.js'),
+    helper = require('../helpers');
 
+router.use(helper.authentication);
 router.all('/', function(req, res) {
     var params = {};
     if(req.body.search) {

@@ -1,6 +1,9 @@
 var express = require('express'),
     router = express.Router(),
-    departmentModel = require('../models/departments.js');
+    departmentModel = require('../models/departments.js'),
+    helper = require('../helpers');
+
+router.use(helper.authentication);
 
 router.get('/', function(req, res) {    
     departmentModel.find({}, function(error, departmentsData){
