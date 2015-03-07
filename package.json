@@ -10,7 +10,7 @@
     "express-session": "^1.10.3",
     "jade": "^1.9.2",
     "mongodb": "^1.4.32",
-    "mongoskin": "^1.4.12"
+    "mongoose": "^3.8.24"
   },
   "devDependencies": {},
   "scripts": {

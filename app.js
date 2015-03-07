@@ -3,7 +3,8 @@ var express = require ('express'),
 	path = require ('path'),
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
-	app = express();
+	app = express(),
+    mongoose = require('mongoose');
 
 app.set('appName', 'Students Management System');
 app.set('port', process.env.PORT || 3000);
@@ -16,6 +17,8 @@ app.use(bodyParser.json());
 app.use(cookieParser('cookie-secret'));
 app.use(session({secret: 'session-secret', 'resave': false, 'saveUninitialized': false}));
 app.use(express.static(__dirname + '/public'));
+
+mongoose.connect('mongodb://localhost/smp');
 
 app.use(require('./controllers'));
 

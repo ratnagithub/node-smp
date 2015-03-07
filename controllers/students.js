@@ -26,9 +26,11 @@ router.get('/add', function(req, res) {
 });
 router.post('/add', function(req, res) {
     data = req.body;
-    studentModel.save(data, function(error, response){
+    studentModel.create(data, function(error, response){
         if(!error){
             console.log(response);
+        } else {
+            console.log(error.message);
         }
     });
     
@@ -39,7 +41,7 @@ router.get('/remove/:id', function(req, res) {
         new Error('No ID passed');
     }
     var id = req.params.id;
-    studentModel.remove(id, function(error, response){
+    studentModel.findByIdAndRemove(id, function(error, response){
         if(!error){
             console.log(response);
         }

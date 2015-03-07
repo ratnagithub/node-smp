@@ -11,9 +11,9 @@ router.post('/login', function(req, res) {
         'login': req.body.login,
         'password': req.body.password
     };
-    usersModel.login(data, function(error, response){
-        if(!error && response){
-            req.session.user = response;
+    usersModel.login(data, function(error, user){
+        if(!error && user.id){
+            req.session.user = user;
         }
         res.redirect('/');
     });

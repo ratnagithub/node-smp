@@ -1,11 +1,10 @@
-var db = require('./db.js'),
-    collection = db.collection('departments');
-exports.find = function(params, callback){
-    collection.find(params).toArray(function(error, departments){
-        if (!error) {
-            callback(false, departments);
-        } else {
-            callback(true);
-        }
-    });
-};
+var mongoose = require('mongoose');
+var departmentSchema = mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    hod: String,
+    nos: Number
+});
+module.exports = mongoose.model('departments', departmentSchema);
