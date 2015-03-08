@@ -1,7 +1,7 @@
+'use strict';
 var express = require('express'),
     router = express.Router(),
-    usersModel = require('../models/users.js'),
-    helper = require('../helpers');
+    usersModel = require('../models/users.js');
 
 router.get('/login', function(req, res) {
     res.render('users/login');
@@ -23,4 +23,4 @@ router.get('/logout', function(req, res) {
     req.session.destroy();
     res.redirect('/');
 });
-module.exports = router
+module.exports = router;

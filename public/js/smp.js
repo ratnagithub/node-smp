@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(function() {
     $('[data-behavior="ajax"]').on('click', function(){
         var url = $(this).data('href'),
             target = $($(this).data('target'));
@@ -7,6 +7,6 @@ $(document).ready(function(){
         }).done(function(data){
             target.html(data);
             $('#myModal').modal('show');
-        })
-    })
+        });
+    });
 });

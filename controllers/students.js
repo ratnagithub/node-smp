@@ -1,3 +1,4 @@
+'use strict';
 var express = require('express'),
     router = express.Router(),
     studentModel = require('../models/students.js'),
@@ -8,7 +9,7 @@ router.all('/', function(req, res) {
     var params = {};
     if(req.body.search) {
         var search = req.body.search;
-        params = {$or: [{"name": search}, {"department": search}, {"email": search}]}
+        params = {$or: [{"name": search}, {"department": search}, {"email": search}]};
     }
     studentModel.find(params, function(error, studentsData){
         if(!error){
@@ -25,7 +26,7 @@ router.get('/add', function(req, res) {
     res.render('students/add');
 });
 router.post('/add', function(req, res) {
-    data = req.body;
+    var data = req.body;
     studentModel.create(data, function(error, response){
         if(!error){
             console.log(response);
@@ -48,4 +49,4 @@ router.get('/remove/:id', function(req, res) {
         res.redirect('/');
     });
 });
-module.exports = router
+module.exports = router;

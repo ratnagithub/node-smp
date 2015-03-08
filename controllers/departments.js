@@ -1,3 +1,4 @@
+'use strict';
 var express = require('express'),
     router = express.Router(),
     departmentModel = require('../models/departments.js'),
@@ -17,4 +18,4 @@ router.get('/', function(req, res) {
         }
     });
 });
-module.exports = router
+module.exports = router;
