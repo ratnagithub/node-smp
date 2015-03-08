@@ -22,11 +22,13 @@
     "superagent": "^0.21.0"
   },
   "scripts": {
+    "test": "mocha tests/*.js --recursive",
     "lint": "grunt jshint"
   },
   "author": "Ratnadeep",
   "license": "ISC",
   "precommit": [
-    "lint"
+    "lint",
+    "test"
   ]
 }
