@@ -20,7 +20,9 @@ app.use(express.static(__dirname + '/public'));
 
 mongoose.connect('mongodb://localhost/smp');
 
-app.use(require('./controllers'));
+//app.use(require('./controllers'));
+
+require('./configs')(app);
 
 app.listen(app.get('port'), function(){
     console.log('Server started on port: ' + app.get('port'));

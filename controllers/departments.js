@@ -1,12 +1,8 @@
 'use strict';
-var express = require('express'),
-    router = express.Router(),
-    departmentModel = require('../models/departments.js'),
-    helper = require('../helpers');
+var departmentModel = require('../models/departments.js');
 
-router.use(helper.authentication);
 
-router.get('/', function(req, res) {    
+exports.index = function(req, res) {    
     departmentModel.find({}, function(error, departmentsData){
         if(!error){
             res.render('departments/index', 
@@ -17,5 +13,4 @@ router.get('/', function(req, res) {
             );
         }
     });
-});
-module.exports = router;
+};

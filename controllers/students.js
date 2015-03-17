@@ -1,11 +1,7 @@
 'use strict';
-var express = require('express'),
-    router = express.Router(),
-    studentModel = require('../models/students.js'),
-    helper = require('../helpers');
+var studentModel = require('../models/students.js');
 
-router.use(helper.authentication);
-router.all('/', function(req, res) {
+exports.index = function(req, res) {
     var params = {};
     if(req.body.search) {
         var search = req.body.search;
@@ -21,11 +17,11 @@ router.all('/', function(req, res) {
             );
         }
     });
-});
-router.get('/add', function(req, res) {
+};
+exports.add =  function(req, res) {
     res.render('students/add');
-});
-router.post('/add', function(req, res) {
+};
+exports.save = function(req, res) {
     var data = req.body;
     studentModel.create(data, function(error, response){
         if(!error){
@@ -33,11 +29,10 @@ router.post('/add', function(req, res) {
         } else {
             console.log(error.message);
         }
-    });
-    
+    });    
     res.redirect('/');
-});
-router.get('/remove/:id', function(req, res) {
+};
+exports.remove =  function(req, res) {
     if(!req.params.id){
         new Error('No ID passed');
     }
@@ -48,5 +43,4 @@ router.get('/remove/:id', function(req, res) {
         }
         res.redirect('/');
     });
-});
-module.exports = router;
+};
